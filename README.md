@@ -1,6 +1,7 @@
-# Fashion Parade Singapore — Website Prototype
+# Fashion Parade Singapore - Website Prototype
 
-**SMU-X COR1301-G9 · Leadership and Team Building · Term 2, AY 2025–2026**
+**SMU-X COR1301-G9 · Leadership and Team Building · Term 2, AY 2025-2026**
+
 Instructor: Dr. Roger Low · Section: G9
 
 ---
