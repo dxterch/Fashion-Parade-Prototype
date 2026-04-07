@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { randomUUID } = require('crypto'); // built-in Node.js — no package needed
 
 const DATA_DIR = path.join(__dirname, '../data');
 
@@ -29,7 +29,7 @@ function writeCollection(collection, data) {
 function insert(collection, record) {
   const data = readCollection(collection);
   const newRecord = {
-    id: uuidv4(),
+    id: randomUUID(),
     createdAt: new Date().toISOString(),
     ...record
   };
@@ -69,7 +69,7 @@ function seedIfEmpty() {
   if (events.length === 0) {
     const seedEvents = [
       {
-        id: uuidv4(),
+        id: randomUUID(),
         title: 'Upcycling Workshop: Denim Edition',
         date: '2026-07-15',
         time: '2:00 PM - 5:00 PM',
@@ -83,7 +83,7 @@ function seedIfEmpty() {
         createdAt: new Date().toISOString()
       },
       {
-        id: uuidv4(),
+        id: randomUUID(),
         title: 'GEN Z Sustainable Fashion Forum',
         date: '2026-08-02',
         time: '10:00 AM - 4:00 PM',
@@ -97,7 +97,7 @@ function seedIfEmpty() {
         createdAt: new Date().toISOString()
       },
       {
-        id: uuidv4(),
+        id: randomUUID(),
         title: 'Thrift & Chill Market',
         date: '2026-08-23',
         time: '11:00 AM - 7:00 PM',
@@ -111,7 +111,7 @@ function seedIfEmpty() {
         createdAt: new Date().toISOString()
       },
       {
-        id: uuidv4(),
+        id: randomUUID(),
         title: 'Q3 Fashion Parade Showcase',
         date: '2026-09-20',
         time: '6:00 PM - 10:00 PM',

@@ -7,6 +7,13 @@ const flash = require('connect-flash');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Suppress MemoryStore warning — expected for a prototype with no database
+const emitWarning = process.emitWarning;
+process.emitWarning = (warning, ...args) => {
+  if (typeof warning === 'string' && warning.includes('MemoryStore')) return;
+  emitWarning.call(process, warning, ...args);
+};
+
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

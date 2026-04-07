@@ -7,7 +7,7 @@ Instructor: Dr. Roger Low · Section: G9
 
 ## About This Prototype
 
-This is a working website prototype built as part of the SMU COR1301-G9 Sustainability Strategies Proposal for **Fashion Parade Singapore**, a Gen Z community advocating for sustainable fashion through upcycling workshops, textile installations and educational programmes.
+This is a working website prototype built as part of the SMU COR1301-G9 Sustainability Strategies Proposal for **Fashion Parade Singapore** — a Gen Z community advocating for sustainable fashion through upcycling workshops, textile installations and educational programmes.
 
 The prototype demonstrates the proposed **Q3/Q4 2026 Digital Centralisation** strategy outlined in the group's proposal: transitioning Fashion Parade's digital presence from a passive Wix page into a fully operational hub that handles volunteer recruitment, community membership, event management and impact reporting — all in one place.
 
