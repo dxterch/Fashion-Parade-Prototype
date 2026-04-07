@@ -1,0 +1,96 @@
+<%- include('layout-top') %>
+
+<div class="admin-content">
+  <div class="admin-panel">
+    <div class="panel-header">
+      <h2>All Volunteer Applications (<%= volunteers.length %>)</h2>
+      <div class="panel-actions">
+        <span class="panel-hint">Drag to sort · Click name to expand</span>
+      </div>
+    </div>
+
+    <% if (volunteers.length === 0) { %>
+      <div class="empty-state-admin">
+        <p>No volunteer applications yet.</p>
+        <p>Applications will appear here once someone completes the volunteer form at <a href="/volunteer/apply">/volunteer/apply</a></p>
+      </div>
+    <% } else { %>
+    <div class="table-wrap">
+      <table class="admin-table admin-table-full">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Skills</th>
+            <th>Hours/Month</th>
+            <th>Status</th>
+            <th>Applied</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% volunteers.forEach(v => { %>
+          <tr class="expandable-row" data-id="<%= v.id %>">
+            <td><strong><%= v.firstName %> <%= v.lastName %></strong><br><small><%= v.pronouns || '' %></small></td>
+            <td><a href="mailto:<%= v.email %>"><%= v.email %></a><br><small><%= v.phone || '' %></small></td>
+            <td><%= v.age || '—' %></td>
+            <td>
+              <div class="tag-wrap">
+                <% (v.skills || []).forEach(s => { %><span class="tag"><%= s %></span><% }) %>
+              </div>
+            </td>
+            <td><%= v.hoursPerMonth || '—' %></td>
+            <td><span class="status-badge status-<%= v.status %>"><%= v.status %></span></td>
+            <td><%= new Date(v.createdAt).toLocaleDateString('en-SG') %></td>
+            <td>
+              <form action="/admin/volunteers/<%= v.id %>/status" method="POST" class="inline-form">
+                <select name="status" class="status-select">
+                  <option value="pending" <%= v.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                  <option value="accepted" <%= v.status === 'accepted' ? 'selected' : '' %>>Accepted</option>
+                  <option value="active" <%= v.status === 'active' ? 'selected' : '' %>>Active</option>
+                  <option value="rejected" <%= v.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                  <option value="alumni" <%= v.status === 'alumni' ? 'selected' : '' %>>Alumni</option>
+                </select>
+                <button type="submit" class="btn-xs">Save</button>
+              </form>
+            </td>
+          </tr>
+          <!-- Expanded detail row -->
+          <tr class="detail-row" id="detail-<%= v.id %>" style="display:none;">
+            <td colspan="8">
+              <div class="detail-box">
+                <div class="detail-col">
+                  <strong>Motivation</strong>
+                  <p><%= v.motivation || 'Not provided' %></p>
+                </div>
+                <div class="detail-col">
+                  <strong>What does sustainable fashion mean to them?</strong>
+                  <p><%= v.sustainableFashionStatement || 'Not provided' %></p>
+                </div>
+                <div class="detail-col">
+                  <strong>Availability</strong>
+                  <p><%= (v.availability || []).join(', ') || 'Not specified' %></p>
+                </div>
+                <div class="detail-col">
+                  <strong>Heard from</strong>
+                  <p><%= v.heardFrom || 'Not specified' %></p>
+                </div>
+                <% if (v.instagram) { %>
+                <div class="detail-col">
+                  <strong>Instagram</strong>
+                  <p><a href="https://instagram.com/<%= v.instagram.replace('@','') %>" target="_blank"><%= v.instagram %></a></p>
+                </div>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('layout-bottom') %>

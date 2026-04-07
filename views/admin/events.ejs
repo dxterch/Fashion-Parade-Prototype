@@ -1,0 +1,94 @@
+<%- include('layout-top') %>
+
+<div class="admin-content">
+  <!-- Create event form -->
+  <div class="admin-panel">
+    <div class="panel-header">
+      <h2>Create New Event</h2>
+    </div>
+    <form class="fp-form fp-form-inline" action="/admin/events/add" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Event Title *</label>
+          <input type="text" name="title" required placeholder="e.g. Upcycling Workshop: Denim Edition">
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select name="category" required>
+            <option value="workshop">Workshop</option>
+            <option value="forum">Forum</option>
+            <option value="market">Market</option>
+            <option value="showcase">Showcase</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date *</label>
+          <input type="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label>Time *</label>
+          <input type="text" name="time" required placeholder="e.g. 2:00 PM - 5:00 PM">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Location *</label>
+          <input type="text" name="location" required placeholder="e.g. The Artground, Singapore">
+        </div>
+        <div class="form-group form-group-sm">
+          <label>Capacity *</label>
+          <input type="number" name="capacity" required min="1" placeholder="30">
+        </div>
+        <div class="form-group form-group-sm">
+          <label>Price</label>
+          <input type="text" name="price" placeholder="FREE or $5">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description *</label>
+        <textarea name="description" required rows="2" placeholder="Describe the event..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Create Event ✦</button>
+    </form>
+  </div>
+
+  <!-- Events list -->
+  <div class="admin-panel">
+    <div class="panel-header">
+      <h2>All Events (<%= events.length %>)</h2>
+    </div>
+    <% if (events.length === 0) { %>
+      <p class="empty-msg">No events yet.</p>
+    <% } else { %>
+    <div class="table-wrap">
+      <table class="admin-table admin-table-full">
+        <thead>
+          <tr><th>Title</th><th>Category</th><th>Date</th><th>Location</th><th>Capacity</th><th>Price</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          <% events.forEach(e => { %>
+          <tr>
+            <td><strong><a href="/events/<%= e.id %>" target="_blank"><%= e.title %></a></strong></td>
+            <td><span class="event-cat event-cat-<%= e.category %> event-cat-sm"><%= e.category %></span></td>
+            <td><%= new Date(e.date).toLocaleDateString('en-SG') %></td>
+            <td><%= e.location %></td>
+            <td><%= e.registered %>/<%= e.capacity %></td>
+            <td><%= e.price %></td>
+            <td>
+              <form action="/admin/events/<%= e.id %>/delete" method="POST" onsubmit="return confirm('Delete this event?')">
+                <button type="submit" class="btn-xs btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('layout-bottom') %>

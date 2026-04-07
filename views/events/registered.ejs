@@ -1,0 +1,28 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<section class="success-section">
+  <div class="container container-sm">
+    <div class="success-card">
+      <div class="success-icon">📅</div>
+      <h1>You're registered, <em><%= name %>!</em></h1>
+      <p class="success-sub">See you at <strong><%= event.title %></strong>!</p>
+
+      <div class="event-confirm-box">
+        <div class="confirm-row"><span>📅 Date</span><strong><%= new Date(event.date).toLocaleDateString('en-SG', {weekday:'long', day:'numeric', month:'long', year:'numeric'}) %></strong></div>
+        <div class="confirm-row"><span>🕐 Time</span><strong><%= event.time %></strong></div>
+        <div class="confirm-row"><span>📍 Location</span><strong><%= event.location %></strong></div>
+        <div class="confirm-row"><span>💰 Price</span><strong><%= event.price %></strong></div>
+      </div>
+
+      <p style="margin:1.5rem 0;opacity:0.7;font-size:0.9rem;">A confirmation has been noted. Add this to your calendar and we'll see you there!</p>
+
+      <div class="success-actions">
+        <a href="/events" class="btn-primary">Browse More Events</a>
+        <a href="/membership" class="btn-secondary">Join Community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,87 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<section class="form-section">
+  <div class="container container-sm">
+    <div class="form-header">
+      <a href="/volunteer" class="back-link">← Back</a>
+      <h1>Volunteer Application</h1>
+      <p>Join the Fashion Parade collective — tell us a bit about yourself.</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-bar">
+      <div class="progress-step active">
+        <div class="progress-dot">1</div>
+        <span>About You</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">2</div>
+        <span>Skills</span>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step">
+        <div class="progress-dot">3</div>
+        <span>Motivation</span>
+      </div>
+    </div>
+
+    <form class="fp-form" action="/volunteer/apply/step1" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required value="<%= formData.firstName || '' %>" placeholder="e.g. Amelia">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required value="<%= formData.lastName || '' %>" placeholder="e.g. Tan">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required value="<%= formData.email || '' %>" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" value="<%= formData.phone || '' %>" placeholder="+65 8xxx xxxx">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="age">Age *</label>
+          <select id="age" name="age" required>
+            <option value="">Select age range</option>
+            <option value="15-17" <%= formData.age === '15-17' ? 'selected' : '' %>>15–17</option>
+            <option value="18-21" <%= formData.age === '18-21' ? 'selected' : '' %>>18–21</option>
+            <option value="22-25" <%= formData.age === '22-25' ? 'selected' : '' %>>22–25</option>
+            <option value="26-30" <%= formData.age === '26-30' ? 'selected' : '' %>>26–30</option>
+            <option value="30+" <%= formData.age === '30+' ? 'selected' : '' %>>30+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pronouns">Pronouns</label>
+          <select id="pronouns" name="pronouns">
+            <option value="">Prefer not to say</option>
+            <option value="she/her" <%= formData.pronouns === 'she/her' ? 'selected' : '' %>>she/her</option>
+            <option value="he/him" <%= formData.pronouns === 'he/him' ? 'selected' : '' %>>he/him</option>
+            <option value="they/them" <%= formData.pronouns === 'they/them' ? 'selected' : '' %>>they/them</option>
+            <option value="other" <%= formData.pronouns === 'other' ? 'selected' : '' %>>other / not listed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="instagram">Instagram Handle</label>
+        <input type="text" id="instagram" name="instagram" value="<%= formData.instagram || '' %>" placeholder="@yourhandle (optional)">
+      </div>
+
+      <button type="submit" class="btn-primary btn-full">Continue to Step 2 →</button>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,262 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<section class="page-hero page-hero-lavender">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-eyebrow">Volunteer Hub</div>
+      <h1>Resources &<br><em>Content Bank</em></h1>
+      <p>Your digital toolkit for Fashion Parade. Pre-approved templates, brand guidelines, onboarding guides and everything you need to hit the ground running — no handholding required.</p>
+      <a href="/volunteer/apply" class="btn-primary">Apply to Access ✦</a>
+    </div>
+  </div>
+</section>
+
+<!-- Content Bank intro -->
+<section style="padding:4rem 1.5rem;background:var(--white);">
+  <div class="container">
+    <div class="section-eyebrow">What Is This?</div>
+    <h2 class="section-title">Fashion Parade's<br><em>Digital Brain</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <p style="color:var(--mid);font-size:1rem;line-height:1.8;margin-bottom:1.25rem;">
+          The Content Bank is Fashion Parade's centralised Digital Asset Management system — our response to the #1 operational risk for youth-led organisations: <strong>knowledge loss when volunteers leave.</strong>
+        </p>
+        <p style="color:var(--mid);font-size:1rem;line-height:1.8;margin-bottom:1.25rem;">
+          Every template, brand rule, onboarding guide and campaign asset lives here. When you join Fashion Parade, you don't start from scratch — you start from our best work.
+        </p>
+        <div style="background:var(--pastel-pink);border-left:4px solid var(--hot-pink);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1rem 1.25rem;font-size:0.9rem;line-height:1.6;color:var(--mid);">
+          <strong style="color:var(--dark);">From the Proposal:</strong> "By converting tacit creative knowledge into an accessible resource, the organization safeguards its institutional memory against volunteer turnover." — SMU COR1301 Sustainability Strategies Report, 2025
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <% const benefits = [
+          {icon:'⚡', title:'Onboard in Minutes', desc:'New volunteers can self-serve — no core team supervision needed for standard tasks.'},
+          {icon:'🎨', title:'Brand Consistency', desc:'Every post, every deck, every flyer stays on-brand no matter who makes it.'},
+          {icon:'📚', title:'Institutional Memory', desc:'Workshop runsheets, event learnings and campaign data survive volunteer turnover.'},
+          {icon:'📈', title:'Scale Without Chaos', desc:'As the team grows, quality stays consistent. New chapters can replicate the model.'}
+        ]; %>
+        <% benefits.forEach(b => { %>
+        <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--pastel-pink);border-radius:var(--radius-sm);">
+          <span style="font-size:1.5rem;flex-shrink:0;"><%= b.icon %></span>
+          <div>
+            <strong style="font-size:0.9rem;display:block;margin-bottom:0.2rem;"><%= b.title %></strong>
+            <span style="font-size:0.84rem;color:var(--mid);"><%= b.desc %></span>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Resource categories grid -->
+<section style="padding:4rem 1.5rem;background:var(--pastel-pink);">
+  <div class="container">
+    <div class="section-eyebrow">Resource Library</div>
+    <h2 class="section-title">Everything in<br><em>One Place</em></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+
+      <!-- Brand Identity -->
+      <div style="background:var(--white);border:2px solid var(--bubblegum);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,var(--hot-pink),var(--bubblegum));padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🎨</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Visual ID & Brand Templates</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Logos · Colours · Typography</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <% const brandItems = [
+            {label:'Brand Colour Palette', desc:'Hot Pink #FF0199 · Electric Blue #2721FD · Bubblegum · Sky · Lime · Seaglass · Lavender', tag:'PDF'},
+            {label:'Typography Guide', desc:'Roboto Condensed Bold (headers) · Montserrat Regular (body) · Quicksand (captions)', tag:'PDF'},
+            {label:'Logo Variations', desc:'Full colour, white-on-dark, dark-on-white, icon-only versions', tag:'PNG/SVG'},
+            {label:'Canva Story Templates', desc:'Pre-sized Instagram Story templates with brand colours locked', tag:'Canva'},
+            {label:'Post Frame Templates', desc:'Square, portrait and landscape frames for feed posts', tag:'Canva'}
+          ]; %>
+          <% brandItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:var(--pastel-pink);color:var(--hot-pink);font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+          <div style="margin-top:1rem;padding:0.75rem;background:var(--pastel-pink);border-radius:8px;font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:600;color:var(--mid);">
+            🔒 Access granted after volunteer onboarding
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media Packs -->
+      <div style="background:var(--white);border:2px solid var(--sky);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,var(--electric-blue),#1a0fa0);padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📱</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Social Media Packs</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Instagram · TikTok · Lemon8</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <% const socialItems = [
+            {label:'Sustainability 101 Graphics', desc:'Ready-to-post educational carousel series on fabric waste and upcycling', tag:'Instagram'},
+            {label:'Upcycling How-To Guides', desc:'Step-by-step visual guides for workshop promotion posts', tag:'Instagram'},
+            {label:'Event Countdown Reels', desc:'Editable countdown templates for workshop & event promotion', tag:'Reels'},
+            {label:'#14DaysOfSlowLifestyle', desc:'Full 14-post campaign kit — copy, graphics and hashtag guide', tag:'Campaign'},
+            {label:'Caption Template Library', desc:'Approved caption formulas, emoji guide and brand voice dos and don\'ts', tag:'Copy'},
+            {label:'TikTok Script Templates', desc:'60-second educational script structures for "fabric impact explained"', tag:'TikTok'}
+          ]; %>
+          <% socialItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:#f0f0ff;color:var(--electric-blue);font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+          <div style="margin-top:1rem;padding:0.75rem;background:#f0f0ff;border-radius:8px;font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:600;color:var(--mid);">
+            🔒 Access granted after volunteer onboarding
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop Runsheets -->
+      <div style="background:var(--white);border:2px solid var(--seaglass);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#2a8a62,#1a5a42);padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📋</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Workshop Runsheets</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Ops · Logistics · Facilitation</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <% const workshopItems = [
+            {label:'Jen Gala Replication Playbook', desc:'Complete 6-month programme guide for senior-focused upcycling workshops. Took 6 months to perfect — use it.', tag:'Flagship'},
+            {label:'Natural Dye Workshop Guide', desc:'Step-by-step facilitation notes, material list and volunteer briefing', tag:'Runsheet'},
+            {label:'Sewing & Mending Starter Kit', desc:'Beginner-friendly session plan with troubleshooting notes', tag:'Runsheet'},
+            {label:'Textile Portraits Facilitation', desc:'Art-of-Everyone format: group coordination and material prep', tag:'Runsheet'},
+            {label:'Volunteer Pre-Event Briefing', desc:'Standard briefing template for all event types — safety, roles, FAQ', tag:'Template'},
+            {label:'Post-Event Debrief Template', desc:'Structured debrief format capturing dos, don\'ts and metrics for the Content Bank', tag:'Template'}
+          ]; %>
+          <% workshopItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:var(--seaglass);color:#0a5540;font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+          <div style="margin-top:1rem;padding:0.75rem;background:#eafaf5;border-radius:8px;font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:600;color:var(--mid);">
+            🔒 Access granted after volunteer onboarding
+          </div>
+        </div>
+      </div>
+
+      <!-- Grants Taskforce Kit -->
+      <div style="background:var(--white);border:2px solid var(--lime);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#c0a000,#8a7200);padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📝</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Grants Taskforce Kit</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Funding · Administration · Reporting</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <div style="background:#fffbea;border:1.5px solid var(--lime);border-radius:8px;padding:0.85rem;margin-bottom:1rem;font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;color:#5a4a00;">
+            🎯 Specialized role — <a href="/volunteer/apply" style="color:var(--hot-pink);">apply as a Grants Specialist</a> to unlock these resources
+          </div>
+          <% const grantsItems = [
+            {label:'Reusable Grant Proposal Template', desc:'Pre-structured narrative aligned with SG Eco Fund, Seed Kindness Fund and 4ST Partnership Fund', tag:'Template'},
+            {label:'Impact Metrics Tracker', desc:'Standardised spreadsheet: participants, garments upcycled, volunteer hours, reach data', tag:'Excel'},
+            {label:'Cause-Linking Framework', desc:'How to reframe the same workshop as "Mental Wellness" (schools), "Active Ageing" (AACs) or "Environment" (green grants)', tag:'Strategy'},
+            {label:'Grant Submission Calendar', desc:'Upcoming deadlines for SG Eco Fund, Temasek Oscar Fund, Tote Board and more', tag:'Calendar'},
+            {label:'Financial Records Template', desc:'IRAS-compliant simple accounts for a groundup — tracks income, reimbursement and expenses', tag:'Excel'},
+            {label:'Impact Report Template', desc:'Annual report template aligned with donor and grant reporting requirements', tag:'PDF'}
+          ]; %>
+          <% grantsItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:var(--lime);color:#5a4a00;font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Partnership Toolkit -->
+      <div style="background:var(--white);border:2px solid var(--lavender);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,var(--electric-blue),var(--hot-pink));padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🤝</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Partnership Toolkit</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Outreach · Schools · Corporate</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <% const partnerItems = [
+            {label:'School Partnership Pitch Deck', desc:'How to approach schools — NUS, NUS High, LASALLE and ITE template messaging', tag:'Slides'},
+            {label:'Corporate CSR Workshop Deck', desc:'Premium B2B pitch for corporate sustainability workshops ($500–$2,000 pricing)', tag:'Slides'},
+            {label:'Campus Ambassador Playbook', desc:'How to recruit, brief and support on-campus ambassadors for event outreach', tag:'Guide'},
+            {label:'MOU Template', desc:'Standard Memorandum of Understanding for institutional partnerships and fiscal sponsorships', tag:'Legal'},
+            {label:'Stakeholder Power-Interest Map', desc:'Pre-filled matrix of Singapore\'s sustainable fashion ecosystem — who to prioritise', tag:'Strategy'}
+          ]; %>
+          <% partnerItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:var(--lavender);color:#3a2fa0;font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+          <div style="margin-top:1rem;padding:0.75rem;background:#f5f0ff;border-radius:8px;font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:600;color:var(--mid);">
+            🔒 Access granted after volunteer onboarding
+          </div>
+        </div>
+      </div>
+
+      <!-- Onboarding Guide -->
+      <div style="background:var(--white);border:2px solid var(--hot-pink);border-radius:var(--radius);overflow:hidden;">
+        <div style="background:linear-gradient(135deg,var(--hot-pink),#cc0066);padding:1.5rem;color:white;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🚀</div>
+          <h3 style="color:white;font-size:1.2rem;margin-bottom:0.25rem;">Volunteer Onboarding Guide</h3>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;opacity:0.85;text-transform:uppercase;letter-spacing:0.06em;">Start Here · New Volunteers</div>
+        </div>
+        <div style="padding:1.5rem;">
+          <% const onboardItems = [
+            {label:'Welcome Packet', desc:'Fashion Parade mission, values, team structure and what to expect in your first month', tag:'PDF'},
+            {label:'Role-Specific Handbook', desc:'Tailored guides for Content Creators, Events Coordinators, Grants Specialists and more', tag:'PDF'},
+            {label:'Slack Channel Guide', desc:'How we communicate — channel names, etiquette and when to DM vs post', tag:'Guide'},
+            {label:'Buddy System Matching', desc:'You\'ll be paired with an experienced volunteer in your role for your first 4 weeks', tag:'Programme'},
+            {label:'Monthly Gathering Calendar', desc:'Informal social sessions — not task-based, just community building', tag:'Calendar'},
+            {label:'Recognition & Milestones', desc:'How we celebrate: service anniversaries, hours contributed, project completions', tag:'Guide'}
+          ]; %>
+          <% onboardItems.forEach(item => { %>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;"><%= item.label %></div>
+              <div style="font-size:0.77rem;color:var(--light);"><%= item.desc %></div>
+            </div>
+            <span style="background:var(--pastel-pink);color:var(--hot-pink);font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:4px;flex-shrink:0;margin-left:0.5rem;"><%= item.tag %></span>
+          </div>
+          <% }) %>
+          <div style="margin-top:1rem;">
+            <a href="/volunteer/apply" class="btn-primary btn-full">Apply to Get Access →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:4rem 1.5rem;background:var(--dark);color:var(--white);text-align:center;">
+  <div class="container container-sm">
+    <div style="font-size:3rem;margin-bottom:1rem;">📦</div>
+    <h2 style="color:var(--white);margin-bottom:0.75rem;">Want Access to the Full Content Bank?</h2>
+    <p style="color:rgba(255,255,255,0.7);margin-bottom:2rem;font-size:1rem;line-height:1.7;">Apply to volunteer, complete your onboarding call, and you'll get access to all templates, runsheets and guides — ready to use from day one.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/volunteer/apply" class="btn-primary" style="background:var(--hot-pink);">Apply to Volunteer ✦</a>
+      <a href="/impact" class="btn-secondary" style="border-color:rgba(255,255,255,0.4);color:white;">View Our Impact →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+<%- include('../partials/flash') %>
+
+<div class="admin-login-wrap">
+  <div class="admin-login-card">
+    <div class="admin-logo">
+      <span class="logo-fp">FP</span>
+      <span class="logo-text">Admin</span>
+    </div>
+    <h1>Fashion Parade</h1>
+    <p>Operations Dashboard</p>
+
+    <form class="fp-form" action="/admin/login" method="POST">
+      <div class="form-group">
+        <label for="password">Admin Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter password" autofocus>
+      </div>
+      <button type="submit" class="btn-primary btn-full">Sign In →</button>
+    </form>
+    <a href="/" class="back-link" style="display:block;text-align:center;margin-top:1.5rem;">← Back to site</a>
+  </div>
+</div>
+
+</body></html>

@@ -1,0 +1,127 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<%- include('partials/flash') %>
+
+<section class="page-hero page-hero-blue">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-eyebrow">Work With Us</div>
+      <h1>Let's Build<br><em>Something</em></h1>
+      <p>Whether you're a brand, school, media outlet, corporate CSR team or just want to say hi — we'd love to hear from you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership types -->
+<section style="padding:4rem 1.5rem;background:var(--white);">
+  <div class="container">
+    <div class="section-eyebrow">How We Can Work Together</div>
+    <h2 class="section-title">Partnership<br><em>Pathways</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-bottom:3rem;">
+      <%
+        const partnerships = [
+          { icon:'🏢', title:'Corporate CSR Workshop', desc:'Book a branded upcycling workshop for your team. Align your ESG commitments with hands-on, measurable community impact. Premium rates support subsidised community sessions.', tag:'B2B', color:'var(--electric-blue)' },
+          { icon:'🎓', title:'School & Institution Programme', desc:'Bring sustainable fashion education to your students. We specialise in curriculum-linked learning journeys for secondary schools, JCs, polytechnics and universities.', tag:'Education', color:'var(--seaglass)' },
+          { icon:'🎪', title:'Event Collaboration', desc:'Co-present at markets, forums or showcases. We bring the community, the content and the cause — you bring the venue or platform.', tag:'Events', color:'var(--bubblegum)' },
+          { icon:'📰', title:'Media & Press', desc:'Feature stories, interview requests, campaign partnerships. We\'re always happy to talk about sustainable fashion for Gen Z.', tag:'Media', color:'var(--lime)' },
+          { icon:'💰', title:'Grant & Funding Partners', desc:'Support our mission through the SG Eco Fund, Seed Kindness Fund, Tote Board or direct sponsorship. We provide detailed impact reporting.', tag:'Funding', color:'var(--hot-pink)' },
+          { icon:'🤝', title:'Venue & Resource Partners', desc:'Offer us a space, materials or pro bono services via BAGUS Together / NVPC. Physical assets are our biggest operational challenge — your support goes a long way.', tag:'Resources', color:'var(--lavender)' }
+        ];
+      %>
+      <% partnerships.forEach(p => { %>
+      <div style="border:2px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all 0.25s ease;cursor:default;" onmouseover="this.style.borderColor='<%= p.color %>';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size:1.75rem;margin-bottom:0.75rem;"><%= p.icon %></div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <h3 style="font-size:1rem;"><%= p.title %></h3>
+          <span style="background:var(--pastel-pink);color:var(--hot-pink);font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px;white-space:nowrap;flex-shrink:0;"><%= p.tag %></span>
+        </div>
+        <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;"><%= p.desc %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Contact form + info -->
+<section class="contact-section" style="background:var(--pastel-pink);">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <p>Tell us about your collaboration idea and we'll get back to you within 3–5 working days. We're always open to new partnerships that align with our mission.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <span>📱</span>
+            <div>
+              <strong>Instagram (fastest response)</strong>
+              <a href="https://www.instagram.com/fashionparadesg/" target="_blank">@fashionparadesg</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span>💼</span>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="https://sg.linkedin.com/company/fashionparade" target="_blank">Fashion Parade SG</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span>📍</span>
+            <div>
+              <strong>Based in</strong>
+              <span>Singapore</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corporate workshop callout -->
+        <div style="margin-top:2rem;background:var(--electric-blue);color:white;border-radius:var(--radius);padding:1.5rem;">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;margin-bottom:0.5rem;">💼 Corporate CSR Workshops</div>
+          <p style="font-size:0.87rem;opacity:0.85;line-height:1.6;margin-bottom:0.75rem;">Book a workshop for your team and align your ESG commitments with measurable community impact. Premium B2B rates help subsidise free sessions for seniors and youth.</p>
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;color:var(--lime);">From SGD 500 · Min 10 pax · Fully facilitated</div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3 style="font-size:1.4rem;margin-bottom:0.5rem;">Send a Message</h3>
+        <p style="color:var(--mid);font-size:0.88rem;margin-bottom:1.5rem;">Fill in the form and we'll match you to the right person on our team.</p>
+        <form class="fp-form" action="/contact" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Organisation</label>
+            <input type="text" name="organisation" placeholder="Company / school / institution (if applicable)">
+          </div>
+          <div class="form-group">
+            <label>Purpose of Contact *</label>
+            <select name="purpose" required>
+              <option value="">Select the best match...</option>
+              <option value="corporate-csr">Corporate CSR Workshop Booking</option>
+              <option value="school-programme">School / Institution Programme</option>
+              <option value="event-collab">Event Collaboration</option>
+              <option value="media">Media / Press Enquiry</option>
+              <option value="grant-funding">Grant / Funding Partnership</option>
+              <option value="venue-resource">Venue / Resource Partnership</option>
+              <option value="general">General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea name="message" required rows="5" placeholder="Tell us about your idea — the more detail the better! Include dates, audience size or budget if relevant."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Send Message ✦</button>
+          <p style="font-family:'Quicksand',sans-serif;font-size:0.78rem;color:var(--light);text-align:center;margin-top:0.75rem;font-weight:600;">We respond within 3–5 working days</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

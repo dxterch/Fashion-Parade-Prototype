@@ -1,0 +1,21 @@
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-fp">#</div>
+      <span class="logo-text">Fashion Parade</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/"          class="<%= currentPath === '/' ? 'active' : '' %>">Home</a></li>
+      <li><a href="/events"    class="<%= currentPath.startsWith('/events') ? 'active' : '' %>">Events</a></li>
+      <li><a href="/community" class="<%= currentPath === '/community' ? 'active' : '' %>">Community</a></li>
+      <li><a href="/membership"class="<%= currentPath.startsWith('/membership') ? 'active' : '' %>">Join</a></li>
+      <li><a href="/volunteer" class="<%= currentPath.startsWith('/volunteer') ? 'active' : '' %>">Volunteer</a></li>
+      <li><a href="/impact"    class="<%= currentPath === '/impact' ? 'active' : '' %>">Impact</a></li>
+      <li><a href="/contact"   class="<%= currentPath === '/contact' ? 'active' : '' %>">Contact</a></li>
+      <li><a href="/volunteer/apply" class="btn-nav">Apply Now ★</a></li>
+    </ul>
+  </div>
+</nav>

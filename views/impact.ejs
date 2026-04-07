@@ -1,0 +1,252 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<!-- Hero -->
+<section style="background:linear-gradient(135deg,var(--electric-blue) 0%,#1a0fa0 100%);color:var(--white);padding:5rem 1.5rem 3rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 20% 60%,rgba(254,230,151,0.12) 0%,transparent 50%),radial-gradient(circle at 80% 30%,rgba(255,1,153,0.12) 0%,transparent 50%);"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-eyebrow" style="border-color:var(--lime);color:var(--lime);">Live Data · Updated <%= generatedAt %></div>
+    <h1 style="color:var(--white);font-size:clamp(2.5rem,6vw,5rem);margin:0.5rem 0 1rem;">Our Impact</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;max-width:560px;line-height:1.75;">
+      Every workshop, every volunteer, every upcycled garment — tracked here. This dashboard reflects Fashion Parade's real-time community footprint in Singapore.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+      <a href="/volunteer/apply" class="btn-primary" style="background:var(--hot-pink);border:none;">Become a Volunteer</a>
+      <a href="/membership" class="btn-secondary" style="border-color:rgba(255,255,255,0.5);color:white;">Join Community</a>
+    </div>
+  </div>
+</section>
+
+<!-- Top KPI strip -->
+<section style="background:var(--dark);padding:2.5rem 1.5rem;">
+  <div class="container">
+    <div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--lime);"><%= stats.totalVolunteers %>+</div>
+        <div class="stat-label">Total Volunteers</div>
+      </div>
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--hot-pink);"><%= stats.totalMembers %>+</div>
+        <div class="stat-label">Community Members</div>
+      </div>
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--sky);"><%= stats.fabricKg %>kg</div>
+        <div class="stat-label">Fabric Upcycled</div>
+      </div>
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--bubblegum);"><%= stats.initiatives %>+</div>
+        <div class="stat-label">Initiatives Run</div>
+      </div>
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--seaglass);"><%= stats.totalRegistrations %></div>
+        <div class="stat-label">Event Registrations</div>
+      </div>
+      <div class="stat-card" style="background:#1a1a1a;border:1px solid #333;">
+        <div class="stat-num" style="font-size:2.8rem;color:var(--lime);"><%= stats.totalEvents %></div>
+        <div class="stat-label">Events on Platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Charts section -->
+<section style="padding:4rem 1.5rem;background:var(--pastel-pink);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:2rem;">
+
+      <!-- Sign-up trend chart -->
+      <div style="background:var(--white);border:2px solid var(--bubblegum);border-radius:var(--radius);padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+          <div>
+            <div class="section-eyebrow" style="margin-bottom:0.25rem;">Growth Trend</div>
+            <h3 style="font-size:1.15rem;">Monthly Sign-Ups</h3>
+          </div>
+          <div style="display:flex;gap:1rem;font-family:'Quicksand',sans-serif;font-size:0.75rem;font-weight:700;">
+            <span style="display:flex;align-items:center;gap:0.35rem;"><span style="width:12px;height:12px;background:var(--hot-pink);border-radius:2px;display:inline-block;"></span>Volunteers</span>
+            <span style="display:flex;align-items:center;gap:0.35rem;"><span style="width:12px;height:12px;background:var(--electric-blue);border-radius:2px;display:inline-block;"></span>Members</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:0.75rem;height:160px;padding-bottom:1.5rem;position:relative;border-bottom:2px solid var(--border);">
+          <% const maxVal = Math.max(1, ...trend.map(t => Math.max(t.volunteers, t.members))); %>
+          <% trend.forEach(t => { %>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end;">
+            <div style="width:100%;display:flex;gap:2px;align-items:flex-end;">
+              <div style="flex:1;background:var(--hot-pink);border-radius:3px 3px 0 0;height:<%= Math.max(4, Math.round((t.volunteers/maxVal)*130)) %>px;transition:height 0.5s ease;" title="<%= t.volunteers %> volunteers"></div>
+              <div style="flex:1;background:var(--electric-blue);border-radius:3px 3px 0 0;height:<%= Math.max(4, Math.round((t.members/maxVal)*130)) %>px;transition:height 0.5s ease;" title="<%= t.members %> members"></div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+          <% trend.forEach(t => { %>
+          <div style="flex:1;text-align:center;font-family:'Quicksand',sans-serif;font-size:0.68rem;font-weight:700;color:var(--light);text-transform:uppercase;"><%= t.label %></div>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Volunteer lifecycle pipeline -->
+      <div style="background:var(--white);border:2px solid var(--bubblegum);border-radius:var(--radius);padding:2rem;">
+        <div class="section-eyebrow" style="margin-bottom:0.5rem;">Volunteer Lifecycle</div>
+        <h3 style="font-size:1.15rem;margin-bottom:1.5rem;">Application Pipeline</h3>
+        <%
+          const pipelineStages = [
+            { key:'pending',  label:'Pending Review', color:'var(--lime)',     icon:'⏳' },
+            { key:'accepted', label:'Accepted',       color:'var(--seaglass)', icon:'✅' },
+            { key:'active',   label:'Active',         color:'var(--electric-blue)', icon:'🌟' },
+            { key:'alumni',   label:'Alumni',         color:'var(--lavender)', icon:'🎓' }
+          ];
+          const pipelineTotal = Math.max(1, Object.values(pipeline).reduce((a,b)=>a+b,0));
+        %>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <% pipelineStages.forEach(stage => { %>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
+              <span style="font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;"><%= stage.icon %> <%= stage.label %></span>
+              <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:1.1rem;color:<%= stage.color %>;"><%= pipeline[stage.key] %></span>
+            </div>
+            <div style="height:8px;background:var(--border);border-radius:100px;overflow:hidden;">
+              <div style="height:100%;width:<%= Math.max(2, Math.round((pipeline[stage.key]/pipelineTotal)*100)) %>%;background:<%= stage.color %>;border-radius:100px;transition:width 0.6s ease;"></div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <div style="margin-top:1.5rem;padding:0.75rem;background:var(--pastel-pink);border-radius:8px;font-family:'Quicksand',sans-serif;font-size:0.8rem;font-weight:600;color:var(--mid);">
+          Total in pipeline: <strong style="color:var(--hot-pink);"><%= Object.values(pipeline).reduce((a,b)=>a+b,0) %></strong> volunteers
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;">
+
+      <!-- Member tier breakdown -->
+      <div style="background:var(--white);border:2px solid var(--bubblegum);border-radius:var(--radius);padding:2rem;">
+        <div class="section-eyebrow" style="margin-bottom:0.5rem;">Membership</div>
+        <h3 style="font-size:1.15rem;margin-bottom:1.5rem;">Community Tier Breakdown</h3>
+        <%
+          const tiers = [
+            { key:'community',  label:'Community (Free)',    color:'var(--seaglass)', icon:'🌱', fee:'Free' },
+            { key:'collective', label:'Collective',          color:'var(--lavender)', icon:'✦',  fee:'Active Participant' },
+            { key:'founding',   label:'Founding Member',     color:'var(--hot-pink)', icon:'⭐', fee:'$20–$30/yr' }
+          ];
+          const tierTotal = Math.max(1, Object.values(tierBreakdown).reduce((a,b)=>a+b,0));
+        %>
+        <% tiers.forEach(t => { %>
+        <div style="display:flex;align-items:center;gap:1rem;padding:0.85rem;border:1.5px solid var(--border);border-radius:10px;margin-bottom:0.75rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--hot-pink)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:1.5rem;"><%= t.icon %></div>
+          <div style="flex:1;">
+            <div style="font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;"><%= t.label %></div>
+            <div style="font-family:'Quicksand',sans-serif;font-size:0.72rem;color:var(--light);font-weight:600;"><%= t.fee %></div>
+            <div style="height:5px;background:var(--border);border-radius:100px;margin-top:0.4rem;overflow:hidden;">
+              <div style="height:100%;width:<%= Math.max(2, Math.round((tierBreakdown[t.key]/tierTotal)*100)) %>%;background:<%= t.color %>;border-radius:100px;"></div>
+            </div>
+          </div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:<%= t.color %>;"><%= tierBreakdown[t.key] %></div>
+        </div>
+        <% }) %>
+        <a href="/membership" class="btn-primary btn-full" style="margin-top:0.5rem;">Join Community →</a>
+      </div>
+
+      <!-- Top volunteer skills -->
+      <div style="background:var(--white);border:2px solid var(--bubblegum);border-radius:var(--radius);padding:2rem;">
+        <div class="section-eyebrow" style="margin-bottom:0.5rem;">Volunteer Skills</div>
+        <h3 style="font-size:1.15rem;margin-bottom:1.5rem;">Top Skills in Our Collective</h3>
+        <% if (topSkills.length === 0) { %>
+          <p style="color:var(--light);font-size:0.88rem;">No volunteer data yet — <a href="/volunteer/apply" style="color:var(--hot-pink);font-weight:700;">be the first to apply!</a></p>
+        <% } else { %>
+        <% const maxSkill = topSkills[0][1]; %>
+        <% topSkills.forEach(([skill, count], i) => { %>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:1rem;color:var(--hot-pink);width:20px;text-align:right;"><%= i+1 %></div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.25rem;">
+              <span style="font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;"><%= skill %></span>
+              <span style="font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;color:var(--mid);"><%= count %></span>
+            </div>
+            <div style="height:6px;background:var(--border);border-radius:100px;overflow:hidden;">
+              <div style="height:100%;width:<%= Math.round((count/maxSkill)*100) %>%;background:linear-gradient(90deg,var(--hot-pink),var(--electric-blue));border-radius:100px;"></div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+        <% } %>
+        <div style="margin-top:1rem;">
+          <a href="/volunteer/apply" class="btn-primary btn-full">Apply to Volunteer →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Milestones timeline -->
+<section style="padding:4rem 1.5rem;background:var(--white);">
+  <div class="container">
+    <div class="section-eyebrow">Our Journey</div>
+    <h2 class="section-title">From Grassroots to<br><em>Growing Initiative</em></h2>
+    <div style="position:relative;max-width:800px;">
+      <div style="position:absolute;left:24px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--hot-pink),var(--electric-blue));"></div>
+      <%
+        const milestones = [
+          { year:'2022', title:'Fashion Parade Founded', desc:'First digital fashion show during COVID-19. Seed community built through Instagram.', color:'var(--hot-pink)' },
+          { year:'2022', title:'First In-Person Event', desc:'Student Swap Party in collaboration with The Fashion Pulpit — our first post-COVID activation.', color:'var(--bubblegum)' },
+          { year:'2023', title:'Jen Gala Senior Workshop Launch', desc:'A year-long partnership with Jalan Besar Active Aging Centre. Took 6 months to perfect and is now a repeatable programme.', color:'var(--electric-blue)' },
+          { year:'2024', title:'The Art of Everyone Mural', desc:'Textile mural project with NUS — repurposing fabric waste into large-scale community art installations.', color:'var(--seaglass)' },
+          { year:'2024', title:'SG59 National Day Installation', desc:'Commissioned textile installation celebrating Singapore\'s 59th National Day. 600kg+ fabric upcycled to date.', color:'var(--lime)' },
+          { year:'2025', title:'Indo x SG Batik Installation', desc:'Cross-cultural textile installation bridging Indonesian and Singaporean heritage through fashion.', color:'var(--lavender)' },
+          { year:'2026', title:'Digital Hub Launch (Q3/Q4)', desc:'This platform — centralised volunteer onboarding, membership sign-ups and event management. Moving beyond Instagram.', color:'var(--hot-pink)' }
+        ];
+      %>
+      <% milestones.forEach((m, i) => { %>
+      <div style="display:flex;gap:1.5rem;margin-bottom:2rem;padding-left:56px;position:relative;">
+        <div style="position:absolute;left:12px;top:6px;width:24px;height:24px;border-radius:50%;background:<%= m.color %>;border:3px solid var(--white);box-shadow:0 0 0 2px <%= m.color %>;"></div>
+        <div style="flex:1;background:var(--pastel-pink);border-radius:var(--radius-sm);padding:1.25rem;border-left:3px solid <%= m.color %>;">
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--light);margin-bottom:0.25rem;"><%= m.year %></div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:1.05rem;text-transform:uppercase;margin-bottom:0.4rem;"><%= m.title %></div>
+          <p style="font-size:0.87rem;color:var(--mid);line-height:1.55;margin:0;"><%= m.desc %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Future vision from proposal -->
+<section style="padding:4rem 1.5rem;background:var(--electric-blue);color:var(--white);">
+  <div class="container">
+    <div class="section-eyebrow" style="border-color:var(--lime);color:var(--lime);">Future Vision · 3–5 Years</div>
+    <h2 style="color:var(--white);font-size:clamp(2rem,4vw,3rem);margin-bottom:2.5rem;">Where We're Headed</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
+      <%
+        const visions = [
+          { icon:'🏗️', title:'Hub-and-Spoke Operations', desc:'Decentralised system-led model where trained volunteer Project Leads independently execute an Annual Campaign Calendar without core team bottlenecks.' },
+          { icon:'💰', title:'Financial Independence', desc:'Balanced revenue portfolio: $20–$30/yr Eco-Ambassador memberships, corporate CSR workshops, ticketed showcases and sustainable merchandise.' },
+          { icon:'🎓', title:'Sector Leadership', desc:'Premier partner for education institutions and corporate CSR — a critical community consultant for SG Green Plan 2030\'s Sustainable Living pillar.' },
+          { icon:'📊', title:'Impact Transparency', desc:'Published annual impact reports tracking fabric upcycled, workshops delivered, volunteers trained and partnerships formed — just like this dashboard.' }
+        ];
+      %>
+      <% visions.forEach(v => { %>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:1.75rem;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <div style="font-size:2rem;margin-bottom:0.75rem;"><%= v.icon %></div>
+        <h3 style="color:var(--white);font-size:1.05rem;margin-bottom:0.5rem;"><%= v.title %></h3>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.86rem;line-height:1.6;"><%= v.desc %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Share / download CTA -->
+<section style="padding:3rem 1.5rem;background:var(--pastel-pink);text-align:center;">
+  <div class="container container-sm">
+    <div class="section-eyebrow">Share Our Story</div>
+    <h2 style="font-size:1.8rem;margin-bottom:0.75rem;">Help Us Grow</h2>
+    <p style="color:var(--mid);margin-bottom:2rem;font-size:0.95rem;line-height:1.7;">Every share helps us reach more Singaporeans who care about sustainable fashion. Tag us <strong style="color:var(--hot-pink);">@fashionparadesg</strong></p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/volunteer/apply" class="btn-primary">Become a Volunteer</a>
+      <a href="/membership" class="btn-secondary">Join Community</a>
+      <a href="/contact" class="btn-outline">Partner With Us</a>
+    </div>
+    <p style="font-family:'Quicksand',sans-serif;font-size:0.75rem;color:var(--light);margin-top:1.5rem;font-weight:600;">Data updated live · Generated <%= generatedAt %></p>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

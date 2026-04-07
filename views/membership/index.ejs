@@ -1,0 +1,138 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+<%- include('../partials/flash') %>
+
+<section class="page-hero page-hero-pink">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-tag">Community</div>
+      <h1>Join the <em>Fashion Parade</em> Family</h1>
+      <p>Become a community member and get early access to events, workshop invites, our newsletter, and a direct line to Singapore's most passionate sustainable fashion community.</p>
+    </div>
+  </div>
+</section>
+
+<section class="membership-section">
+  <div class="container">
+    <div class="membership-layout">
+
+      <!-- Membership tiers info -->
+      <div class="tiers-panel">
+        <h2>Membership tiers</h2>
+
+        <div style="background:var(--pastel-pink);border:1.5px solid var(--bubblegum);border-radius:var(--radius-sm);padding:0.85rem 1rem;margin-bottom:1.25rem;font-family:'Quicksand',sans-serif;font-size:0.82rem;font-weight:700;color:var(--mid);">
+          💡 Membership fees go directly toward materials, venue costs and volunteer appreciation — keeping our workshops accessible to everyone.
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-badge">🌱 Community — <span style="color:var(--hot-pink);">Free</span></div>
+          <p>For anyone who wants to stay connected, receive our newsletter and attend public events. No commitment required.</p>
+          <ul>
+            <li>✓ Monthly newsletter</li>
+            <li>✓ Event announcements</li>
+            <li>✓ Community updates</li>
+            <li>✓ Access to public workshops</li>
+          </ul>
+        </div>
+
+        <div class="tier-card tier-collective-card">
+          <div class="tier-badge">✦ Collective — <span style="color:var(--electric-blue);">$5/year</span></div>
+          <p>For active participants who attend workshops regularly, contribute ideas and help shape the community direction.</p>
+          <ul>
+            <li>✓ Everything in Community</li>
+            <li>✓ Early event access</li>
+            <li>✓ Priority workshop slots</li>
+            <li>✓ Collective Slack access</li>
+            <li>✓ Eco-Ambassador recognition</li>
+          </ul>
+        </div>
+
+        <div class="tier-card tier-founding-card">
+          <div class="tier-badge">⭐ Founding Member — <span style="color:var(--hot-pink);">$10/year</span></div>
+          <p>Our most dedicated supporters — help set the direction of Fashion Parade and get credited in our content and impact reports.</p>
+          <ul>
+            <li>✓ Everything in Collective</li>
+            <li>✓ Co-creation opportunities</li>
+            <li>✓ Named in Annual Impact Report</li>
+            <li>✓ Founding member digital badge</li>
+            <li>✓ Direct access to leadership team</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--lime);border-radius:var(--radius-sm);padding:0.85rem 1rem;font-family:'Quicksand',sans-serif;font-size:0.8rem;font-weight:700;color:#5a4a00;">
+          ♻️ Subsidised rates available for seniors and students — just mention it in your sign-up message.
+        </div>
+      </div>
+
+      <!-- Sign-up form -->
+      <div class="signup-panel">
+        <div class="signup-card">
+          <h2>Sign up — it's free</h2>
+          <form class="fp-form" action="/membership/join" method="POST">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Amelia">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Tan">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+65 8xxx xxxx">
+            </div>
+
+            <div class="form-group">
+              <label for="memberType">Membership Tier *</label>
+              <select id="memberType" name="memberType" required>
+                <option value="community">🌱 Community (Free)</option>
+                <option value="collective">✦ Collective (Active participant)</option>
+                <option value="founding">⭐ Founding Member</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Interests <span class="label-hint">(select all that apply)</span></label>
+              <div class="checkbox-grid checkbox-grid-sm">
+                <% const interests = ['Upcycling', 'Thrifting', 'Sustainable Brands', 'Fashion Design', 'Events', 'Podcasts', 'Workshops', 'Social Media'] %>
+                <% interests.forEach(i => { %>
+                <label class="checkbox-card">
+                  <input type="checkbox" name="interests" value="<%= i %>">
+                  <span><%= i %></span>
+                </label>
+                <% }) %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-single">
+                <input type="checkbox" name="newsletter">
+                <span>Subscribe to our newsletter — events, workshops & sustainable fashion tips</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-single">
+                <input type="checkbox" name="agreeToTerms" required>
+                <span>I agree to Fashion Parade's community guidelines and privacy policy *</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary btn-full">Join Fashion Parade ✦</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

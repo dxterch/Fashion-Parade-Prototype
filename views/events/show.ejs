@@ -1,0 +1,134 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+<%- include('../partials/flash') %>
+
+<% 
+const eventBgMap = {
+  workshop: '/images/workshop-natural-dye-2.jpg',
+  forum:    '/images/partnership-nus-1.jpg',
+  market:   '/images/workshop-sewing-4.jpg',
+  showcase: '/images/installation-mural-2.jpg'
+};
+const heroImg = eventBgMap[event.category] || '/images/workshop-sewing-1.jpg';
+%>
+
+<!-- Event hero banner -->
+<div style="height:320px;overflow:hidden;position:relative;">
+  <img src="<%= heroImg %>" alt="<%= event.title %>" style="width:100%;height:100%;object-fit:cover;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.55));"></div>
+  <div style="position:absolute;bottom:2rem;left:2rem;color:white;max-width:700px;">
+    <span class="event-cat event-cat-<%= event.category %>" style="margin-bottom:0.75rem;display:inline-block;"><%= event.category %></span>
+    <h1 style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;letter-spacing:-1px;line-height:1;color:white;"><%= event.title %></h1>
+  </div>
+</div>
+
+<section class="event-hero">
+  <div class="container">
+    <a href="/events" class="back-link">← All Events</a>
+    <div class="event-hero-layout" style="margin-top:2rem;">
+
+      <div class="event-hero-info">
+        <div class="event-details-list">
+          <div class="event-detail">
+            <span class="detail-icon">📅</span>
+            <div>
+              <strong>Date</strong>
+              <span><%= new Date(event.date).toLocaleDateString('en-SG', {weekday:'long', day:'numeric', month:'long', year:'numeric'}) %></span>
+            </div>
+          </div>
+          <div class="event-detail">
+            <span class="detail-icon">🕐</span>
+            <div>
+              <strong>Time</strong>
+              <span><%= event.time %></span>
+            </div>
+          </div>
+          <div class="event-detail">
+            <span class="detail-icon">📍</span>
+            <div>
+              <strong>Location</strong>
+              <span><%= event.location %></span>
+            </div>
+          </div>
+          <div class="event-detail">
+            <span class="detail-icon">💰</span>
+            <div>
+              <strong>Price</strong>
+              <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--electric-blue);"><%= event.price %></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-capacity-section">
+          <div class="capacity-bar capacity-bar-lg">
+            <div class="capacity-fill" style="width: <%= Math.min(100, Math.round(event.registered/event.capacity*100)) %>%"></div>
+          </div>
+          <p style="font-family:'Quicksand',sans-serif;font-size:0.85rem;font-weight:700;color:var(--mid);">
+            <strong style="color:var(--hot-pink);"><%= event.registered %></strong> of <strong><%= event.capacity %></strong> spots filled
+            <% if (event.registered >= event.capacity) { %><span class="sold-out-tag">FULL</span><% } %>
+          </p>
+        </div>
+
+        <p class="event-full-desc"><%= event.description %></p>
+
+        <!-- Related photos -->
+        <div style="margin-top:2rem;">
+          <div style="font-family:'Quicksand',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--light);margin-bottom:0.75rem;">From Our Previous Events</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div style="border-radius:8px;overflow:hidden;height:100px;"><img src="/images/workshop-sewing-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+            <div style="border-radius:8px;overflow:hidden;height:100px;"><img src="/images/workshop-textile-portraits-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+            <div style="border-radius:8px;overflow:hidden;height:100px;"><img src="/images/workshop-natural-dye-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration form -->
+      <div class="event-register-panel">
+        <div class="register-card">
+          <% if (event.registered >= event.capacity) { %>
+            <h2>This event is full</h2>
+            <p>Register below to join the waitlist — we'll notify you if a spot opens up.</p>
+          <% } else { %>
+            <h2>Register Now</h2>
+            <p>Secure your spot — it's quick!</p>
+          <% } %>
+
+          <form class="fp-form" action="/events/<%= event.id %>/register" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Amelia">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Tan">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+65 8xxx xxxx">
+            </div>
+            <div class="form-group">
+              <label for="dietaryNeeds">Dietary / accessibility needs</label>
+              <input type="text" id="dietaryNeeds" name="dietaryNeeds" placeholder="e.g. vegetarian, wheelchair access">
+            </div>
+            <div class="form-group">
+              <label for="message">Any questions? (optional)</label>
+              <textarea id="message" name="message" rows="2" placeholder="Questions or notes..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">
+              <%= event.registered >= event.capacity ? 'Join Waitlist ✦' : 'Confirm Registration ✦' %>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,54 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<section class="success-section">
+  <div class="container container-sm">
+    <div class="success-card">
+      <div class="success-icon">✦</div>
+      <h1>Welcome, <em><%= member.firstName %>!</em></h1>
+      <p class="success-sub">You're officially part of the Fashion Parade community. We're so glad you're here.</p>
+
+      <div class="member-badge">
+        <span class="badge-tier">
+          <% if (member.memberType === 'founding') { %> ⭐ Founding Member
+          <% } else if (member.memberType === 'collective') { %> ✦ Collective Member
+          <% } else { %> 🌱 Community Member
+          <% } %>
+        </span>
+        <span class="badge-since">Since <%= new Date().toLocaleDateString('en-SG', {month:'long', year:'numeric'}) %></span>
+      </div>
+
+      <div class="success-steps">
+        <h3>What's next for you?</h3>
+        <div class="next-step">
+          <span class="next-num">📧</span>
+          <div>
+            <strong>Check your inbox</strong>
+            <p>A welcome email is on its way with community resources and links.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-num">📅</span>
+          <div>
+            <strong>Attend an event</strong>
+            <p>Browse our upcoming events and register for something that excites you.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-num">📱</span>
+          <div>
+            <strong>Follow us</strong>
+            <p>Stay connected on Instagram and TikTok @fashionparadesg for daily inspiration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a href="/events" class="btn-primary">See Upcoming Events</a>
+        <a href="/volunteer/apply" class="btn-secondary">Also Volunteer?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

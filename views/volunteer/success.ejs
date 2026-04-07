@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+
+<section class="success-section">
+  <div class="container container-sm">
+    <div class="success-card">
+      <div class="success-icon">🌿</div>
+      <h1>You're in, <em><%= name %>!</em></h1>
+      <p class="success-sub">Your volunteer application has been received. We're so excited you want to be part of the Fashion Parade collective.</p>
+
+      <div class="success-steps">
+        <h3>What happens next?</h3>
+        <div class="next-step">
+          <span class="next-num">01</span>
+          <div>
+            <strong>Application Review</strong>
+            <p>Our team will review your application within 5–7 working days.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-num">02</span>
+          <div>
+            <strong>Role Matching</strong>
+            <p>We'll match you with the role that best fits your skills and interests.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-num">03</span>
+          <div>
+            <strong>Welcome Email</strong>
+            <p>You'll receive an onboarding email with next steps and an invite to our community Slack.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a href="/events" class="btn-primary">Explore Upcoming Events</a>
+        <a href="/membership" class="btn-secondary">Join as a Member Too</a>
+      </div>
+
+      <div class="success-socials">
+        <p>Follow us while you wait!</p>
+        <a href="https://www.instagram.com/fashionparadesg/" target="_blank">@fashionparadesg</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

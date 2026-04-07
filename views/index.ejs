@@ -1,0 +1,255 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<%- include('partials/flash') %>
+
+<section class="hero">
+  <div class="hero-deco">
+    <div class="hero-deco-star star-1"></div>
+    <div class="hero-deco-star star-2"></div>
+    <div class="hero-deco-star star-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">✦ Singapore's Gen Z Community ✦</div>
+      <h1 class="hero-title">
+        <span class="line-dark">Fashion</span>
+        <span class="line-pink">That</span>
+        <span class="line-blue">Gives</span>
+        <span class="line-dark">Back.</span>
+      </h1>
+      <p class="hero-sub">A Gen Z collective in Singapore advocating for sustainable fashion — through workshops, textile installations, events and real conversations about our planet.</p>
+      <div class="hero-cta">
+        <a href="/volunteer/apply" class="btn-primary">Volunteer With Us</a>
+        <a href="/events" class="btn-secondary">See Events →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><%= stats.volunteers %>+</div>
+          <div class="hero-stat-label">Gen Z Volunteers</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><%= stats.fabric %>kg</div>
+          <div class="hero-stat-label">Fabric Upcycled</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><%= stats.initiatives %>+</div>
+          <div class="hero-stat-label">Initiatives</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-main">
+        <img src="/images/installation-mural-1.jpg" alt="The Art of Everyone Mural" loading="eager">
+        <div class="hero-img-badge">The Art of Everyone Mural</div>
+      </div>
+      <div class="hero-img-a">
+        <img src="/images/workshop-natural-dye-1.jpg" alt="Natural dye workshop" loading="eager">
+      </div>
+      <div class="hero-img-b">
+        <img src="/images/installation-national-day-1.jpg" alt="National Day installation" loading="eager">
+      </div>
+    </div>
+  </div>
+  <div class="hero-marquee">
+    <div class="marquee-track">
+      <span>Sustainable Fashion</span><span class="marquee-star">★</span>
+      <span>Upcycling Workshops</span><span class="marquee-star">★</span>
+      <span>Gen Z Community</span><span class="marquee-star">★</span>
+      <span>GEN Z Chats Podcast</span><span class="marquee-star">★</span>
+      <span>Singapore</span><span class="marquee-star">★</span>
+      <span>Conscious Style</span><span class="marquee-star">★</span>
+      <span>Textile Installations</span><span class="marquee-star">★</span>
+      <span>Sustainable Fashion</span><span class="marquee-star">★</span>
+      <span>Upcycling Workshops</span><span class="marquee-star">★</span>
+      <span>Gen Z Community</span><span class="marquee-star">★</span>
+      <span>GEN Z Chats Podcast</span><span class="marquee-star">★</span>
+      <span>Singapore</span><span class="marquee-star">★</span>
+      <span>Conscious Style</span><span class="marquee-star">★</span>
+      <span>Textile Installations</span><span class="marquee-star">★</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num"><%= stats.volunteers %>+</div>
+        <div class="stat-label">Passionate Gen Z</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><%= stats.initiatives %>+</div>
+        <div class="stat-label">Initiatives for the Planet</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><%= stats.fabric %>kg</div>
+        <div class="stat-label">Fabric Waste Upcycled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2022</div>
+        <div class="stat-label">Founded in Singapore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what-section">
+  <div class="container">
+    <div class="section-eyebrow">What We Do</div>
+    <h2 class="section-title">More Than Fashion.<br><em>It's a Movement.</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">📱</div>
+        <h3>Content Creation</h3>
+        <p>Bite-sized, engaging educational content on social media — making sustainability feel real and relevant for Gen Z.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🎙️</div>
+        <h3>GEN Z Chats Podcast</h3>
+        <p>Our podcast where we get real about sustainable fashion — the good, the greenwashed and everything in between.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">✂️</div>
+        <h3>Upcycling Workshops</h3>
+        <p>Hands-on workshops that teach you to transform pre-loved pieces into something new — fabric waste into fashion statements.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🎉</div>
+        <h3>In-Person Events</h3>
+        <p>Markets, forums and showcases — our events activate real conversations and genuine connections within our community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-heading">
+      <div class="section-eyebrow">Our Work</div>
+      <h2 class="section-title">From Workshops to<br><em>Textile Installations</em></h2>
+    </div>
+    <div class="photo-mosaic">
+      <div class="mosaic-item">
+        <img src="/images/installation-mural-2.jpg" alt="The Art of Everyone Mural" loading="lazy">
+        <div class="mosaic-label">The Art of Everyone Mural</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/workshop-natural-dye-2.jpg" alt="Natural Dye Workshop" loading="lazy">
+        <div class="mosaic-label">Natural Dye Workshop</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/installation-pink-earth.jpg" alt="Pink Earth Installation" loading="lazy">
+        <div class="mosaic-label">Pink Earth Installation</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/workshop-sewing-1.jpg" alt="Sewing Workshop" loading="lazy">
+        <div class="mosaic-label">Sewing and Mending</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/installation-national-day-2.jpg" alt="SG59 National Day" loading="lazy">
+        <div class="mosaic-label">SG59 National Day</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/workshop-textile-portraits-1.jpg" alt="Textile Portraits" loading="lazy">
+        <div class="mosaic-label">Textile Portraits</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/installation-indo-sg-2.jpg" alt="INDO x SG Batik" loading="lazy">
+        <div class="mosaic-label">INDO x SG Batik</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="/images/partnership-nus-1.jpg" alt="NUS Partnership" loading="lazy">
+        <div class="mosaic-label">NUS Partnership</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder-section">
+  <div class="container">
+    <div class="founder-layout">
+      <div class="founder-img-wrap">
+        <img src="/images/founder-lumin.jpg" alt="Lumin, Founder of Fashion Parade">
+        <div class="founder-img-badge">✦ Our Founder</div>
+      </div>
+      <div class="founder-content">
+        <div class="section-eyebrow" style="border-color:var(--lime);color:var(--lime);">A Message From Our Founder</div>
+        <h2 style="color:var(--white);">Meet Lumin</h2>
+        <p class="founder-quote">"Fashion Parade is a safe and inviting space for all to learn and experience sustainable fashion as a community. Our community stands to spread awareness and inspire more to be conscious and innovative whilst having fun!"</p>
+        <div class="founder-name">Lumin</div>
+        <div class="founder-title">Founder, Fashion Parade SG</div>
+        <a href="/volunteer/apply" class="btn-blue" style="margin-top:2rem;display:inline-block;">Join Our Team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="events-preview">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow" style="border-color:var(--electric-blue);color:var(--electric-blue);">Upcoming Events</div>
+        <h2 class="section-title" style="margin-bottom:0;">Join Us <em>In Person</em></h2>
+      </div>
+      <a href="/events" class="btn-outline">View All Events →</a>
+    </div>
+    <div class="events-grid">
+      <% const eventImgs = ['/images/workshop-natural-dye-3.jpg','/images/installation-marine-parade-1.jpg','/images/workshop-sewing-4.jpg']; %>
+      <% events.forEach((event, i) => { %>
+      <div class="event-card">
+        <div class="event-card-img">
+          <img src="<%= eventImgs[i % eventImgs.length] %>" alt="<%= event.title %>" loading="lazy">
+        </div>
+        <div class="event-card-body">
+          <span class="event-cat event-cat-<%= event.category %>"><%= event.category %></span>
+          <div class="event-date">
+            <span class="event-day"><%= new Date(event.date).toLocaleDateString('en-SG', {day:'numeric'}) %></span>
+            <span class="event-month">&nbsp;<%= new Date(event.date).toLocaleDateString('en-SG', {month:'short', year:'numeric'}) %></span>
+          </div>
+          <h3><%= event.title %></h3>
+          <p class="event-location">📍 <%= event.location %></p>
+          <p class="event-time">🕐 <%= event.time %></p>
+          <div class="event-footer">
+            <span class="event-price"><%= event.price %></span>
+            <a href="/events/<%= event.id %>" class="btn-sm">Register →</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-eyebrow">The Team</div>
+      <h2 class="section-title">Our Collective</h2>
+      <p style="color:var(--mid);max-width:520px;margin:0 auto;font-size:1rem;line-height:1.75;">Over 70 passionate Gen Z creatives, strategists, designers and advocates — all united by a love for fashion that doesn't cost the earth.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><img src="/images/team-1.jpg" alt="Fashion Parade team" loading="lazy"><div class="team-card-overlay"></div></div>
+      <div class="team-card"><img src="/images/team-2.jpg" alt="Fashion Parade collective" loading="lazy"><div class="team-card-overlay"></div></div>
+      <div class="team-card"><img src="/images/team-3.jpg" alt="Fashion Parade community" loading="lazy"><div class="team-card-overlay"></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="/membership" class="btn-primary">Join Our Community ✦</a>
+    </div>
+  </div>
+</section>
+
+<section class="join-cta">
+  <div class="container">
+    <div class="join-cta-inner">
+      <div class="join-star">✦</div>
+      <h2>Ready to Begin Your<br>Sustainable Fashion Journey?</h2>
+      <p>Join our collective of 70+ passionate Gen Z creatives and changemakers across Singapore.</p>
+      <div class="join-options">
+        <a href="/membership" class="btn-primary">Join Community</a>
+        <a href="/volunteer/apply" class="btn-secondary">Volunteer With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

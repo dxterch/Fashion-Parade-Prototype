@@ -1,0 +1,24 @@
+<%- include('layout-top') %>
+<div class="admin-content">
+  <div class="admin-panel">
+    <div class="panel-header"><h2>Contact Messages (<%= contacts.length %>)</h2></div>
+    <% if (contacts.length === 0) { %>
+      <p class="empty-msg">No messages yet.</p>
+    <% } else { %>
+    <div class="messages-list">
+      <% contacts.forEach(c => { %>
+      <div class="message-card">
+        <div class="message-meta">
+          <strong><%= c.name %></strong>
+          <span><a href="mailto:<%= c.email %>"><%= c.email %></a></span>
+          <span class="tag"><%= c.purpose %></span>
+          <span class="msg-date"><%= new Date(c.createdAt).toLocaleDateString('en-SG') %></span>
+        </div>
+        <p class="message-body"><%= c.message %></p>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</div>
+<%- include('layout-bottom') %>

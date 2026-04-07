@@ -1,0 +1,115 @@
+<%- include('layout-top') %>
+
+<div class="admin-content">
+  <!-- Stats grid -->
+  <div class="admin-stats-grid">
+    <div class="admin-stat-card">
+      <div class="admin-stat-icon">🙋</div>
+      <div class="admin-stat-num"><%= stats.volunteers %></div>
+      <div class="admin-stat-label">Total Volunteers</div>
+      <% if (stats.pendingVolunteers > 0) { %>
+        <div class="admin-stat-badge"><%= stats.pendingVolunteers %> pending review</div>
+      <% } %>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-icon">👥</div>
+      <div class="admin-stat-num"><%= stats.members %></div>
+      <div class="admin-stat-label">Community Members</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-icon">📅</div>
+      <div class="admin-stat-num"><%= stats.events %></div>
+      <div class="admin-stat-label">Active Events</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-icon">✅</div>
+      <div class="admin-stat-num"><%= stats.registrations %></div>
+      <div class="admin-stat-label">Event Registrations</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-icon">📬</div>
+      <div class="admin-stat-num"><%= stats.contacts %></div>
+      <div class="admin-stat-label">Contact Messages</div>
+    </div>
+  </div>
+
+  <div class="admin-panels">
+    <!-- Recent volunteers -->
+    <div class="admin-panel">
+      <div class="panel-header">
+        <h2>Recent Volunteer Applications</h2>
+        <a href="/admin/volunteers" class="btn-sm">View All</a>
+      </div>
+      <% if (recentVolunteers.length === 0) { %>
+        <p class="empty-msg">No applications yet.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Skills</th><th>Status</th><th>Date</th></tr></thead>
+        <tbody>
+          <% recentVolunteers.forEach(v => { %>
+          <tr>
+            <td><strong><%= v.firstName %> <%= v.lastName %></strong></td>
+            <td><%= v.email %></td>
+            <td><span class="tag-list"><%= (v.skills || []).slice(0,2).join(', ') %><%= v.skills && v.skills.length > 2 ? ` +${v.skills.length-2}` : '' %></span></td>
+            <td><span class="status-badge status-<%= v.status %>"><%= v.status %></span></td>
+            <td><%= new Date(v.createdAt).toLocaleDateString('en-SG') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+
+    <!-- Recent members -->
+    <div class="admin-panel">
+      <div class="panel-header">
+        <h2>Recent Members</h2>
+        <a href="/admin/members" class="btn-sm">View All</a>
+      </div>
+      <% if (recentMembers.length === 0) { %>
+        <p class="empty-msg">No members yet.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Tier</th><th>Date</th></tr></thead>
+        <tbody>
+          <% recentMembers.forEach(m => { %>
+          <tr>
+            <td><strong><%= m.firstName %> <%= m.lastName %></strong></td>
+            <td><%= m.email %></td>
+            <td><span class="tier-tag tier-<%= m.memberType %>"><%= m.memberType %></span></td>
+            <td><%= new Date(m.createdAt).toLocaleDateString('en-SG') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+
+    <!-- Recent registrations -->
+    <div class="admin-panel">
+      <div class="panel-header">
+        <h2>Recent Event Registrations</h2>
+        <a href="/admin/registrations" class="btn-sm">View All</a>
+      </div>
+      <% if (recentRegistrations.length === 0) { %>
+        <p class="empty-msg">No registrations yet.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead><tr><th>Name</th><th>Event</th><th>Email</th><th>Date</th></tr></thead>
+        <tbody>
+          <% recentRegistrations.forEach(r => { %>
+          <tr>
+            <td><strong><%= r.firstName %> <%= r.lastName %></strong></td>
+            <td><%= r.eventTitle %></td>
+            <td><%= r.email %></td>
+            <td><%= new Date(r.createdAt).toLocaleDateString('en-SG') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('layout-bottom') %>

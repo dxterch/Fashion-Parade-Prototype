@@ -1,0 +1,70 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
+<%- include('../partials/flash') %>
+
+<section class="page-hero page-hero-lavender">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="section-tag">Events</div>
+      <h1>Join us <em>in person</em></h1>
+      <p>Workshops, markets, forums and showcases — find your next sustainable fashion experience.</p>
+    </div>
+  </div>
+</section>
+
+<section class="events-section">
+  <div class="container">
+    <!-- Filters -->
+    <form class="events-filters" method="GET" action="/events">
+      <div class="filter-group">
+        <input type="text" name="search" value="<%= search %>" placeholder="Search events..." class="filter-search">
+      </div>
+      <div class="filter-cats">
+        <% ['all','workshop','forum','market','showcase'].forEach(cat => { %>
+        <a href="/events?category=<%= cat %>" class="filter-cat <%= category === cat ? 'active' : '' %>"><%= cat === 'all' ? 'All Events' : cat.charAt(0).toUpperCase() + cat.slice(1) %></a>
+        <% }) %>
+      </div>
+      <button type="submit" class="btn-sm">Search</button>
+    </form>
+
+    <% if (events.length === 0) { %>
+      <div class="empty-state">
+        <p>No events found. <a href="/events">Clear filters</a></p>
+      </div>
+    <% } else { %>
+    <div class="events-list">
+      <% events.forEach(event => { %>
+      <div class="event-row">
+        <div class="event-row-date">
+          <span class="event-day"><%= new Date(event.date).toLocaleDateString('en-SG', {day:'numeric'}) %></span>
+          <span class="event-month"><%= new Date(event.date).toLocaleDateString('en-SG', {month:'short', year:'numeric'}) %></span>
+        </div>
+        <div class="event-row-info">
+          <div class="event-cat event-cat-<%= event.category %> event-cat-sm"><%= event.category %></div>
+          <h3><a href="/events/<%= event.id %>"><%= event.title %></a></h3>
+          <div class="event-meta">
+            <span>📍 <%= event.location %></span>
+            <span>🕐 <%= event.time %></span>
+            <span>💰 <%= event.price %></span>
+          </div>
+          <p class="event-desc"><%= event.description.substring(0, 120) %>...</p>
+        </div>
+        <div class="event-row-action">
+          <div class="event-capacity">
+            <div class="capacity-bar">
+              <div class="capacity-fill" style="width: <%= Math.min(100, Math.round(event.registered/event.capacity*100)) %>%"></div>
+            </div>
+            <span><%= event.registered %>/<%= event.capacity %> spots</span>
+          </div>
+          <a href="/events/<%= event.id %>" class="btn-primary btn-sm">
+            <%= event.registered >= event.capacity ? 'Join Waitlist' : 'Register' %>
+          </a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
