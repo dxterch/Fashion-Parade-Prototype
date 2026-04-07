@@ -125,8 +125,8 @@
         <%
           const tiers = [
             { key:'community',  label:'Community (Free)',    color:'var(--seaglass)', icon:'🌱', fee:'Free' },
-            { key:'collective', label:'Collective',          color:'var(--lavender)', icon:'✦',  fee:'Active Participant' },
-            { key:'founding',   label:'Founding Member',     color:'var(--hot-pink)', icon:'⭐', fee:'$20–$30/yr' }
+            { key:'collective', label:'Collective',          color:'var(--lavender)', icon:'✦',  fee:'$5/yr' },
+            { key:'founding',   label:'Founding Member',     color:'var(--hot-pink)', icon:'⭐', fee:'$10/yr' }
           ];
           const tierTotal = Math.max(1, Object.values(tierBreakdown).reduce((a,b)=>a+b,0));
         %>
