@@ -1,8 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const { randomUUID } = require('crypto'); // built-in Node.js — no package needed
+const { randomUUID } = require('crypto');
 
 const DATA_DIR = path.join(__dirname, '../data');
+
+// Ensure the data directory exists (Railway deploys without it)
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
 
 function getFilePath(collection) {
   return path.join(DATA_DIR, `${collection}.json`);
@@ -63,7 +68,6 @@ function deleteById(collection, id) {
   return filtered.length < data.length;
 }
 
-// Seed events data
 function seedIfEmpty() {
   const events = readCollection('events');
   if (events.length === 0) {

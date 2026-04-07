@@ -1,12 +1,5 @@
 node_modules/
-data/*.json
 .env
 *.log
 npm-debug.log*
 .DS_Store
-mobile2.js
-mobile3.py
-take-mobile-shots.js
-render-pages.js
-resize-images.js
-{views
